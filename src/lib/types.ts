@@ -1,4 +1,4 @@
-export type EventoEvent = {
+/* export type EventoEvent = {
   id: number;
   name: string;
   slug: string;
@@ -11,3 +11,4 @@ export type EventoEvent = {
   createdAt?: string;
   updatedAt?: string;
 };
+*/
