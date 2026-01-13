@@ -4,8 +4,14 @@ import { notFound } from "next/navigation";
 import { prisma } from "./prisma";
 import { capitalize } from "./utils";
 import { unstable_cache } from "next/cache";
+import { EventoEvent } from "@prisma/client";
 
-export const getEvents = unstable_cache(async (city: string, page = 1) => {
+type EventsResponse = Promise<{
+    events: EventoEvent[],
+    totalCount: number
+}>
+
+export const getEvents = unstable_cache(async (city: string, page = 1): EventsResponse => {
     const events = await prisma.eventoEvent.findMany({
         where: {
             city: city === "all" ? undefined : capitalize(city),
